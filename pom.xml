@@ -4,7 +4,7 @@
 
     <groupId>com.grayben</groupId>
     <artifactId>test-helper</artifactId>
-    <version>1.0-buildnull</version>
+    <version>0.1.0-SNAPSHOT</version>
 
     <build>
         <plugins>
