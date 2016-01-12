@@ -1,7 +1,7 @@
-package oracle;
+package com.grayben.testOracle.oracle;
 
-import generator.InputAndExpectedOutputRetrievable;
-import generator.SystemUnderTestRetrievable;
+import com.grayben.testOracle.generator.InputAndExpectedOutputRetrievable;
+import com.grayben.testOracle.generator.SystemUnderTestRetrievable;
 
 /**
  * Created by beng on 8/01/2016.
