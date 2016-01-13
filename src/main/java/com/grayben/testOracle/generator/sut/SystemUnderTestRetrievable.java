@@ -1,4 +1,4 @@
-package com.grayben.testOracle.generator;
+package com.grayben.testOracle.generator.sut;
 
 /**
  * Created by beng on 8/01/2016.
