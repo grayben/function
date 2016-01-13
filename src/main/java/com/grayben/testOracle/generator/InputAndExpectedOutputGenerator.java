@@ -24,7 +24,7 @@ public class InputAndExpectedOutputGenerator<I, O>
             ExpectedOutputRetrievable<O> expectedOutputGenerator){
         if (inputGenerator == null) {
             throw new NullPointerException(
-                    "ioputGenerator was null"
+                    "inputGenerator was null"
             );
         }
         if (expectedOutputGenerator == null) {
