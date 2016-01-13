@@ -1,7 +1,7 @@
 package com.grayben.testOracle.oracle;
 
 import com.grayben.testOracle.generator.InputAndExpectedOutputRetrievable;
-import com.grayben.testOracle.generator.SystemUnderTestRetrievable;
+import com.grayben.testOracle.generator.sut.SystemUnderTestRetrievable;
 import com.sun.istack.internal.NotNull;
 
 /**
