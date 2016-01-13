@@ -8,4 +8,5 @@ import com.grayben.testOracle.generator.output.ExpectedOutputRetrievable;
  */
 public interface InputAndExpectedOutputRetrievable<I, O>
         extends InputRetrievable<I>, ExpectedOutputRetrievable<O> {
+    // the input and expectedOutput must be related
 }

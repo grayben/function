@@ -2,7 +2,6 @@ package com.grayben.testOracle.oracle;
 
 import com.grayben.testOracle.generator.InputAndExpectedOutputRetrievable;
 import com.grayben.testOracle.generator.sut.SystemUnderTestRetrievable;
-import com.sun.istack.internal.NotNull;
 
 /**
  * Created by beng on 8/01/2016.
@@ -17,8 +16,8 @@ public class SUTInputAndOutputOracle<SUT, I, O>
     private SystemUnderTestRetrievable<SUT> sutGenerator;
 
     public SUTInputAndOutputOracle(
-            @NotNull InputAndExpectedOutputRetrievable<I, O> ioGenerator,
-            @NotNull SystemUnderTestRetrievable<SUT> sutGenerator
+            InputAndExpectedOutputRetrievable<I, O> ioGenerator,
+            SystemUnderTestRetrievable<SUT> sutGenerator
     ) {
         processInitParams(ioGenerator, sutGenerator);
         this.ioGenerator = ioGenerator;
@@ -36,8 +35,16 @@ public class SUTInputAndOutputOracle<SUT, I, O>
     private void validateInitParams(
             InputAndExpectedOutputRetrievable<I, O> ioGenerator,
             SystemUnderTestRetrievable<SUT> sutGenerator) {
-        assert ioGenerator != null;
-        assert sutGenerator != null;
+        if (ioGenerator == null) {
+            throw new NullPointerException(
+                    "ioGenerator was null"
+            );
+        }
+        if (sutGenerator == null) {
+            throw new NullPointerException(
+                    "sutGenerator was null"
+            );
+        }
     }
 
     final public I getInput() {

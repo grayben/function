@@ -2,7 +2,6 @@ package com.grayben.testOracle.generator;
 
 import com.grayben.testOracle.generator.input.InputRetrievable;
 import com.grayben.testOracle.generator.output.ExpectedOutputRetrievable;
-import com.sun.istack.internal.NotNull;
 
 /**
  * Created by beng on 7/01/2016.
@@ -14,22 +13,31 @@ public class InputAndExpectedOutputGenerator<I, O>
     ExpectedOutputRetrievable<O> expectedOutputGenerator;
 
     protected InputAndExpectedOutputGenerator(
-            @NotNull InputRetrievable<I> inputGenerator,
-            @NotNull ExpectedOutputRetrievable<O> expectedOutputGenerator){
-        validateInitParams(inputGenerator, expectedOutputGenerator);
+            InputRetrievable<I> inputGenerator,
+            ExpectedOutputRetrievable<O> expectedOutputGenerator){
+        processInitParams(inputGenerator, expectedOutputGenerator);
 
     }
 
     private void validateInitParams(
-            @NotNull InputRetrievable<I> inputGenerator,
-            @NotNull ExpectedOutputRetrievable<O> expectedOutputGenerator){
-        assert inputGenerator != null;
-        assert expectedOutputGenerator != null;
+            InputRetrievable<I> inputGenerator,
+            ExpectedOutputRetrievable<O> expectedOutputGenerator){
+        if (inputGenerator == null) {
+            throw new NullPointerException(
+                    "ioputGenerator was null"
+            );
+        }
+        if (expectedOutputGenerator == null) {
+            throw new NullPointerException(
+                    "expectedOutputGenerator was null"
+            );
+        }
     }
 
     private void processInitParams(
-            @NotNull InputRetrievable<I> inputGenerator,
-            @NotNull ExpectedOutputRetrievable<O> expectedOutputGenerator){
+            InputRetrievable<I> inputGenerator,
+            ExpectedOutputRetrievable<O> expectedOutputGenerator){
+        validateInitParams(inputGenerator, expectedOutputGenerator);
         this.inputGenerator = inputGenerator;
         this.expectedOutputGenerator = expectedOutputGenerator;
     }
