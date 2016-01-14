@@ -13,7 +13,7 @@ public class InputAndExpectedOutputGenerator<I, O>
     private final InputRetrievable<I> inputRetrievable;
     private final ExpectedOutputRetrievable<O> expectedOutputRetrievable;
 
-    private InputAndExpectedOutputGenerator(
+    protected InputAndExpectedOutputGenerator(
             Builder builder){
         this.inputRetrievable = builder.inputRetrievable;
         this.expectedOutputRetrievable = builder.expectedOutputRetrievable;
