@@ -14,7 +14,7 @@ public class SeedBasedExpectedOutputGenerator<S, O> implements ExpectedOutputRet
 
     private O expectedOutput;
 
-    private SeedBasedExpectedOutputGenerator(Builder<S, O> builder){
+    protected SeedBasedExpectedOutputGenerator(Builder<S, O> builder){
         this.seed = builder.seed;
         this.function = builder.function;
     }

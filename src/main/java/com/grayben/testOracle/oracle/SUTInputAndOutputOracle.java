@@ -16,7 +16,7 @@ public class SUTInputAndOutputOracle<SUT, I, O>
     private final InputAndExpectedOutputRetrievable<I, O> inputAndExpectedOutputRetrievable;
     private final SystemUnderTestRetrievable<SUT> systemUnderTestRetrievable;
 
-    private SUTInputAndOutputOracle(Builder<SUT, I, O> builder) {
+    protected SUTInputAndOutputOracle(Builder<SUT, I, O> builder) {
         this.inputAndExpectedOutputRetrievable = builder.inputAndExpectedOutputRetrievable;
         this.systemUnderTestRetrievable = builder.systemUnderTestRetrievable;
     }

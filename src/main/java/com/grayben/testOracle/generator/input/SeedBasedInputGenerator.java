@@ -14,7 +14,7 @@ public class SeedBasedInputGenerator<S, I> implements InputRetrievable<I> {
 
     private I input;
 
-    private SeedBasedInputGenerator(Builder<S, I> builder){
+    protected SeedBasedInputGenerator(Builder<S, I> builder){
         this.seed = builder.seed;
         this.function = builder.function;
 
