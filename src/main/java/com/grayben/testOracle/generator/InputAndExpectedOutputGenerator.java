@@ -9,10 +9,10 @@ import com.grayben.testOracle.generator.output.ExpectedOutputRetrievable;
 public class InputAndExpectedOutputGenerator<I, O>
         implements InputAndExpectedOutputRetrievable<I, O> {
 
-    InputRetrievable<I> inputGenerator;
-    ExpectedOutputRetrievable<O> expectedOutputGenerator;
+    private InputRetrievable<I> inputGenerator;
+    private ExpectedOutputRetrievable<O> expectedOutputGenerator;
 
-    protected InputAndExpectedOutputGenerator(
+    public InputAndExpectedOutputGenerator(
             InputRetrievable<I> inputGenerator,
             ExpectedOutputRetrievable<O> expectedOutputGenerator){
         processInitParams(inputGenerator, expectedOutputGenerator);
