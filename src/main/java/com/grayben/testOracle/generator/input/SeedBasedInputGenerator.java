@@ -9,6 +9,17 @@ import java.util.function.Function;
  */
 public class SeedBasedInputGenerator<S, I> implements InputRetrievable<I> {
 
+    private final S seed;
+    private final Function<S, I> function;
+
+    private I input;
+
+    private SeedBasedInputGenerator(Builder<S, I> builder){
+        this.seed = builder.seed;
+        this.function = builder.function;
+
+    }
+
     public static class Builder<S, I> implements AbstractBuilder<SeedBasedInputGenerator<S, I>> {
 
         private final S seed;
@@ -24,16 +35,6 @@ public class SeedBasedInputGenerator<S, I> implements InputRetrievable<I> {
             structure.validateState();
             return structure;
         }
-    }
-
-    private final S seed;
-    private I input;
-    private final Function<S, I> function;
-
-    private SeedBasedInputGenerator(Builder<S, I> builder){
-        this.seed = builder.seed;
-        this.function = builder.function;
-
     }
 
     private void validateState() {
