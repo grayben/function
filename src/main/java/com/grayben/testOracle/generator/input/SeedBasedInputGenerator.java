@@ -20,7 +20,8 @@ public class SeedBasedInputGenerator<S, I> implements InputRetrievable<I> {
 
     }
 
-    public static class Builder<S, I> implements AbstractBuilder<SeedBasedInputGenerator<S, I>> {
+    public static class Builder<S, I>
+            implements AbstractBuilder<SeedBasedInputGenerator<S, I>> {
 
         private final S seed;
         private final Function<S, I> function;
