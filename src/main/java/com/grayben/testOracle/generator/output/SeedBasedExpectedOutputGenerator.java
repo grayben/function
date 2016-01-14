@@ -1,5 +1,7 @@
 package com.grayben.testOracle.generator.output;
 
+import com.grayben.testOracle.AbstractBuilder;
+
 import java.util.function.Function;
 
 /**
@@ -7,28 +9,42 @@ import java.util.function.Function;
  */
 public class SeedBasedExpectedOutputGenerator<S, O> implements ExpectedOutputRetrievable<O>{
 
-    private S seed;
+    private final S seed;
+    private final Function<S, O> function;
+
     private O expectedOutput;
-    private Function<S, O> function;
-
-    public SeedBasedExpectedOutputGenerator(S seed, Function<S, O> function){
-        processInitParams(seed, function);
+    
+    private SeedBasedExpectedOutputGenerator(Builder<S, O> builder){
+        this.seed = builder.seed;
+        this.function = builder.function;
     }
 
-    private void processInitParams(S seed, Function<S, O> function) {
-        validateInitParams(seed, function);
-        this.seed = seed;
-        this.function = function;
+    public class Builder<S, O> implements AbstractBuilder<SeedBasedExpectedOutputGenerator<S, O>>  {
+
+        private final S seed;
+        private final Function<S, O> function;
+
+        public Builder(S seed, Function<S, O> function){
+            this.seed = seed;
+            this.function = function;
+        }
+
+        @Override
+        public SeedBasedExpectedOutputGenerator<S, O> build() {
+            SeedBasedExpectedOutputGenerator<S, O> structure = new SeedBasedExpectedOutputGenerator<>(this);
+            structure.validateState();
+            return structure;
+        }
     }
 
-    private void validateInitParams(S seed, Function<S, O> function) {
+    private void validateState() {
         if (seed == null) {
-            throw new NullPointerException(
+            throw new IllegalStateException(
                     "seed was null"
             );
         }
         if (function == null) {
-            throw new NullPointerException(
+            throw new IllegalStateException(
                     "function was null"
             );
         }
