@@ -13,13 +13,13 @@ public class SeedBasedExpectedOutputGenerator<S, O> implements ExpectedOutputRet
     private final Function<S, O> function;
 
     private O expectedOutput;
-    
+
     private SeedBasedExpectedOutputGenerator(Builder<S, O> builder){
         this.seed = builder.seed;
         this.function = builder.function;
     }
 
-    public class Builder<S, O> implements AbstractBuilder<SeedBasedExpectedOutputGenerator<S, O>>  {
+    public static class Builder<S, O> implements AbstractBuilder<SeedBasedExpectedOutputGenerator<S, O>>  {
 
         private final S seed;
         private final Function<S, O> function;
