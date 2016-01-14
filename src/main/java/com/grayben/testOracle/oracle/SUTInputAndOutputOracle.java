@@ -1,5 +1,6 @@
 package com.grayben.testOracle.oracle;
 
+import com.grayben.testOracle.AbstractBuilder;
 import com.grayben.testOracle.generator.InputAndExpectedOutputRetrievable;
 import com.grayben.testOracle.generator.sut.SystemUnderTestRetrievable;
 
@@ -12,53 +13,58 @@ public class SUTInputAndOutputOracle<SUT, I, O>
         InputAndExpectedOutputRetrievable<I, O>
 {
 
-    private InputAndExpectedOutputRetrievable<I, O> ioGenerator;
-    private SystemUnderTestRetrievable<SUT> sutGenerator;
+    private final InputAndExpectedOutputRetrievable<I, O> inputAndExpectedOutputRetrievable;
+    private final SystemUnderTestRetrievable<SUT> systemUnderTestRetrievable;
 
-    public SUTInputAndOutputOracle(
-            InputAndExpectedOutputRetrievable<I, O> ioGenerator,
-            SystemUnderTestRetrievable<SUT> sutGenerator
-    ) {
-        processInitParams(ioGenerator, sutGenerator);
-        this.ioGenerator = ioGenerator;
-        this.sutGenerator = sutGenerator;
+    private SUTInputAndOutputOracle(Builder<SUT, I, O> builder) {
+        this.inputAndExpectedOutputRetrievable = builder.inputAndExpectedOutputRetrievable;
+        this.systemUnderTestRetrievable = builder.systemUnderTestRetrievable;
     }
 
-    private void processInitParams(
-            InputAndExpectedOutputRetrievable<I, O> ioGenerator,
-            SystemUnderTestRetrievable<SUT> sutGenerator) {
-        validateInitParams(ioGenerator, sutGenerator);
-        this.ioGenerator = ioGenerator;
-        this.sutGenerator = sutGenerator;
+    public static class Builder<SUT, I, O> implements AbstractBuilder<SUTInputAndOutputOracle<SUT, I, O>> {
+
+        private final SystemUnderTestRetrievable<SUT> systemUnderTestRetrievable;
+        private final InputAndExpectedOutputRetrievable<I, O> inputAndExpectedOutputRetrievable;
+
+        public Builder(SystemUnderTestRetrievable<SUT> systemUnderTestRetrievable,
+                       InputAndExpectedOutputRetrievable<I, O> inputAndExpectedOutputRetrievable){
+            this.systemUnderTestRetrievable = systemUnderTestRetrievable;
+            this.inputAndExpectedOutputRetrievable = inputAndExpectedOutputRetrievable;
+        }
+
+        @Override
+        public SUTInputAndOutputOracle<SUT, I, O> build() {
+            SUTInputAndOutputOracle<SUT, I, O> structure = new SUTInputAndOutputOracle<>(this);
+            structure.validateState();
+            return structure;
+        }
     }
 
-    private void validateInitParams(
-            InputAndExpectedOutputRetrievable<I, O> ioGenerator,
-            SystemUnderTestRetrievable<SUT> sutGenerator) {
-        if (ioGenerator == null) {
-            throw new NullPointerException(
-                    "ioGenerator was null"
+    private void validateState() {
+        if (this.inputAndExpectedOutputRetrievable == null) {
+            throw new IllegalStateException(
+                    "inputAndExpectedOutputRetrievable was null"
             );
         }
-        if (sutGenerator == null) {
-            throw new NullPointerException(
-                    "sutGenerator was null"
+        if (this.systemUnderTestRetrievable == null) {
+            throw new IllegalStateException(
+                    "systemUnderTestRetrievable was null"
             );
         }
     }
 
     final public I getInput() {
-        assert ioGenerator != null;
-        return ioGenerator.getInput();
+        assert inputAndExpectedOutputRetrievable != null;
+        return inputAndExpectedOutputRetrievable.getInput();
     }
 
     final public O getExpectedOutput() {
-        assert ioGenerator != null;
-        return ioGenerator.getExpectedOutput();
+        assert inputAndExpectedOutputRetrievable != null;
+        return inputAndExpectedOutputRetrievable.getExpectedOutput();
     }
 
     final public SUT getSUT() {
-        assert sutGenerator != null;
-        return sutGenerator.getSUT();
+        assert systemUnderTestRetrievable != null;
+        return systemUnderTestRetrievable.getSUT();
     }
 }

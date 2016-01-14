@@ -1,5 +1,6 @@
 package com.grayben.testOracle.generator;
 
+import com.grayben.testOracle.AbstractBuilder;
 import com.grayben.testOracle.generator.input.InputRetrievable;
 import com.grayben.testOracle.generator.output.ExpectedOutputRetrievable;
 
@@ -9,44 +10,52 @@ import com.grayben.testOracle.generator.output.ExpectedOutputRetrievable;
 public class InputAndExpectedOutputGenerator<I, O>
         implements InputAndExpectedOutputRetrievable<I, O> {
 
-    InputRetrievable<I> inputGenerator;
-    ExpectedOutputRetrievable<O> expectedOutputGenerator;
+    private final InputRetrievable<I> inputRetrievable;
+    private final ExpectedOutputRetrievable<O> expectedOutputRetrievable;
 
-    protected InputAndExpectedOutputGenerator(
-            InputRetrievable<I> inputGenerator,
-            ExpectedOutputRetrievable<O> expectedOutputGenerator){
-        processInitParams(inputGenerator, expectedOutputGenerator);
+    private InputAndExpectedOutputGenerator(
+            Builder builder){
+        this.inputRetrievable = builder.inputRetrievable;
+        this.expectedOutputRetrievable = builder.expectedOutputRetrievable;
 
     }
 
-    private void validateInitParams(
-            InputRetrievable<I> inputGenerator,
-            ExpectedOutputRetrievable<O> expectedOutputGenerator){
-        if (inputGenerator == null) {
-            throw new NullPointerException(
-                    "inputGenerator was null"
-            );
+    public static class Builder<I, O> implements AbstractBuilder<InputAndExpectedOutputGenerator<I, O>>{
+
+        private final InputRetrievable<I> inputRetrievable;
+        private final ExpectedOutputRetrievable<O> expectedOutputRetrievable;
+
+        public Builder(InputRetrievable<I> inputRetrievable, ExpectedOutputRetrievable<O> expectedOutputRetrievable){
+            this.inputRetrievable = inputRetrievable;
+            this.expectedOutputRetrievable = expectedOutputRetrievable;
         }
-        if (expectedOutputGenerator == null) {
-            throw new NullPointerException(
-                    "expectedOutputGenerator was null"
-            );
+
+        @Override
+        public InputAndExpectedOutputGenerator<I, O> build() {
+            InputAndExpectedOutputGenerator<I, O> structure = new InputAndExpectedOutputGenerator<>(this);
+            structure.validateState();
+            return structure;
         }
     }
 
-    private void processInitParams(
-            InputRetrievable<I> inputGenerator,
-            ExpectedOutputRetrievable<O> expectedOutputGenerator){
-        validateInitParams(inputGenerator, expectedOutputGenerator);
-        this.inputGenerator = inputGenerator;
-        this.expectedOutputGenerator = expectedOutputGenerator;
+    private void validateState(){
+        if (inputRetrievable == null) {
+            throw new IllegalStateException(
+                    "inputRetrievable was null"
+            );
+        }
+        if (expectedOutputRetrievable == null) {
+            throw new IllegalStateException(
+                    "expectedOutputRetrievable was null"
+            );
+        }
     }
 
     public I getInput() {
-        return this.inputGenerator.getInput();
+        return this.inputRetrievable.getInput();
     }
 
     public O getExpectedOutput() {
-        return this.expectedOutputGenerator.getExpectedOutput();
+        return this.expectedOutputRetrievable.getExpectedOutput();
     }
 }
