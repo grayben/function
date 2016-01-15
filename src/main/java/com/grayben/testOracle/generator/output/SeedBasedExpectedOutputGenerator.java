@@ -21,6 +21,23 @@ public class SeedBasedExpectedOutputGenerator<S, O> implements ExpectedOutputRet
 
     public static class Builder<S, O> implements AbstractBuilder<SeedBasedExpectedOutputGenerator<S, O>>  {
 
+        public static abstract class Director<S, O> {
+            private S seed;
+            private Function<S, O> function;
+            public SeedBasedExpectedOutputGenerator<S, O> getGenerator(){
+                return new Builder<>(seed, function).build();
+            }
+
+            private void defineBuilderParameters(){
+                this.seed = generateSeed();
+                this.function = generateFunction();
+            }
+
+            protected abstract S generateSeed();
+
+            protected abstract Function<S,O> generateFunction();
+        }
+
         private final S seed;
         private final Function<S, O> function;
 
