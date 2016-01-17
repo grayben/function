@@ -1,44 +1,30 @@
 package com.grayben.testOracle.oracle;
 
-import com.grayben.testOracle.AbstractBuilder;
+import com.grayben.testOracle.generator.InputAndExpectedOutputCalculable;
 import com.grayben.testOracle.generator.InputAndExpectedOutputRetrievable;
 import com.grayben.testOracle.generator.sut.SystemUnderTestRetrievable;
 
 /**
  * Created by beng on 8/01/2016.
  */
-public class SUTInputAndOutputOracle<SUT, I, O>
+public abstract class SUTInputAndOutputOracle<SUT, I, O>
         implements
         SystemUnderTestRetrievable<SUT>,
         InputAndExpectedOutputRetrievable<I, O>
 {
 
-    private final InputAndExpectedOutputRetrievable<I, O> inputAndExpectedOutputRetrievable;
+    private final InputAndExpectedOutputCalculable<?, I, O> inputAndExpectedOutputRetrievable;
     private final SystemUnderTestRetrievable<SUT> systemUnderTestRetrievable;
 
-    protected SUTInputAndOutputOracle(Builder<SUT, I, O> builder) {
-        this.inputAndExpectedOutputRetrievable = builder.inputAndExpectedOutputRetrievable;
-        this.systemUnderTestRetrievable = builder.systemUnderTestRetrievable;
+    public SUTInputAndOutputOracle() {
+        this.inputAndExpectedOutputRetrievable = generateInputAndExpectedOutputRetrievable();
+        this.systemUnderTestRetrievable = generateSutRetrievable();
+        validateState();
     }
 
-    public static class Builder<SUT, I, O> implements AbstractBuilder<SUTInputAndOutputOracle<SUT, I, O>> {
+    protected abstract InputAndExpectedOutputCalculable<?, I, O> generateInputAndExpectedOutputRetrievable();
 
-        private final SystemUnderTestRetrievable<SUT> systemUnderTestRetrievable;
-        private final InputAndExpectedOutputRetrievable<I, O> inputAndExpectedOutputRetrievable;
-
-        public Builder(SystemUnderTestRetrievable<SUT> systemUnderTestRetrievable,
-                       InputAndExpectedOutputRetrievable<I, O> inputAndExpectedOutputRetrievable){
-            this.systemUnderTestRetrievable = systemUnderTestRetrievable;
-            this.inputAndExpectedOutputRetrievable = inputAndExpectedOutputRetrievable;
-        }
-
-        @Override
-        public SUTInputAndOutputOracle<SUT, I, O> build() {
-            SUTInputAndOutputOracle<SUT, I, O> structure = new SUTInputAndOutputOracle<>(this);
-            structure.validateState();
-            return structure;
-        }
-    }
+    protected abstract SystemUnderTestRetrievable<SUT> generateSutRetrievable();
 
     private void validateState() {
         if (this.inputAndExpectedOutputRetrievable == null) {
@@ -55,12 +41,12 @@ public class SUTInputAndOutputOracle<SUT, I, O>
 
     final public I getInput() {
         assert inputAndExpectedOutputRetrievable != null;
-        return inputAndExpectedOutputRetrievable.getInput();
+        return inputAndExpectedOutputRetrievable.calculateInput();
     }
 
     final public O getExpectedOutput() {
         assert inputAndExpectedOutputRetrievable != null;
-        return inputAndExpectedOutputRetrievable.getExpectedOutput();
+        return inputAndExpectedOutputRetrievable.calculateExpectedOutput();
     }
 
     final public SUT getSUT() {
