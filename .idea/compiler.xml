@@ -19,7 +19,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="test-helper" target="1.8" />
+      <module name="function" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
