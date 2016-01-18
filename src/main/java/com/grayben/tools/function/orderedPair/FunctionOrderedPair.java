@@ -1,4 +1,4 @@
-package com.grayben.tools.function;
+package com.grayben.tools.function.orderedPair;
 
 import com.grayben.tools.InputAndExpectedOutputRetrievable;
 import com.grayben.tools.sut.configuration.SUTConfigurationRetrievable;

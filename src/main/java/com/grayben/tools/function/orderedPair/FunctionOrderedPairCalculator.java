@@ -1,4 +1,4 @@
-package com.grayben.tools.function;
+package com.grayben.tools.function.orderedPair;
 
 import java.util.function.Function;
 
