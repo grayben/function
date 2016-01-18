@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/function.iml" filepath="$PROJECT_DIR$/function.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../test-oracle/test-oracle.iml" filepath="$PROJECT_DIR$/../test-oracle/test-oracle.iml" />
     </modules>
   </component>
 </project>

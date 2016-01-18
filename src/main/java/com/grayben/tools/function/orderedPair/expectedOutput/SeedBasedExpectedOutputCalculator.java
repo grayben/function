@@ -1,6 +1,6 @@
-package com.grayben.testOracle.generator.function.orderedPair.expectedOutput;
+package com.grayben.tools.function.orderedPair.expectedOutput;
 
-import com.grayben.testOracle.generator.function.parameter.SeedBasedCalculator;
+import com.grayben.tools.function.parameter.SeedBasedCalculator;
 
 import java.util.function.Function;
 

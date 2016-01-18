@@ -1,4 +1,4 @@
-package com.grayben.testOracle.generator.function.orderedPair.expectedOutput;
+package com.grayben.tools.function.orderedPair.expectedOutput;
 
 /**
  * Created by beng on 13/01/2016.

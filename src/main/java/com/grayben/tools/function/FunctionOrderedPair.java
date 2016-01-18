@@ -1,7 +1,7 @@
-package com.grayben.testOracle.generator.function;
+package com.grayben.tools.function;
 
-import com.grayben.testOracle.generator.InputAndExpectedOutputRetrievable;
-import com.grayben.testOracle.generator.sut.configuration.SUTConfigurationRetrievable;
+import com.grayben.tools.InputAndExpectedOutputRetrievable;
+import com.grayben.tools.sut.configuration.SUTConfigurationRetrievable;
 
 /**
  * Created by beng on 8/01/2016.

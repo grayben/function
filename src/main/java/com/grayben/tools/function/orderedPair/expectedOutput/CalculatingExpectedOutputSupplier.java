@@ -1,4 +1,4 @@
-package com.grayben.testOracle.generator.function.orderedPair.expectedOutput;
+package com.grayben.tools.function.orderedPair.expectedOutput;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
