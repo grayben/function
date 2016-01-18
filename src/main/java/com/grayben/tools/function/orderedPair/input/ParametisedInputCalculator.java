@@ -1,14 +1,11 @@
 package com.grayben.tools.function.orderedPair.input;
 
-import com.grayben.tools.function.parameter.SeedBasedCalculator;
-
 import java.util.function.Function;
 
 /**
  * Created by beng on 13/01/2016.
  */
-public abstract class SeedBasedInputCalculator<S, O>
-        extends SeedBasedCalculator<S, O>
+public abstract class ParametisedInputCalculator<S, O>
         implements InputCalculable<S, O> {
 
     @Override

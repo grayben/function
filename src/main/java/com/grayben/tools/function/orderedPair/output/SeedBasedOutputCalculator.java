@@ -1,17 +1,14 @@
-package com.grayben.tools.function.orderedPair.expectedOutput;
-
-import com.grayben.tools.function.parameter.SeedBasedCalculator;
+package com.grayben.tools.function.orderedPair.output;
 
 import java.util.function.Function;
 
 /**
  * Created by beng on 13/01/2016.
  */
-public abstract class SeedBasedExpectedOutputCalculator<S, O>
-        extends SeedBasedCalculator<S, O>
-        implements ExpectedOutputCalculable<S, O> {
+public abstract class SeedBasedOutputCalculator<S, O>
+        implements OutputCalculable<S, O> {
 
-    public final O calculateExpectedOutput(S seed) {
+    public final O calculateOutput(S seed) {
         return this.generateResult(seed);
     }
 
