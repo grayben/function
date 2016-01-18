@@ -1,15 +1,15 @@
-package com.grayben.testOracle.oracle;
+package com.grayben.testOracle.generator.function;
 
 import java.util.function.Function;
 
 /**
  * Created by beng on 17/01/2016.
  */
-public abstract class FunctionOrderedPairGenerator<S, C, I, O> {
+public abstract class FunctionOrderedPairCalculator<S, C, I, O> {
 
     private final Function<S, FunctionOrderedPair<C, I, O>> function;
 
-    public FunctionOrderedPairGenerator(){
+    public FunctionOrderedPairCalculator(){
         this.function = generateFunction();
     }
 

@@ -4,7 +4,11 @@
 
     <groupId>com.grayben</groupId>
     <artifactId>test-helper</artifactId>
+    <packaging>pom</packaging>
     <version>0.3.2-SNAPSHOT</version>
+    <modules>
+        <module>../function</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

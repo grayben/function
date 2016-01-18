@@ -1,4 +1,4 @@
-package com.grayben.testOracle.generator.input;
+package com.grayben.testOracle.generator.function.orderedPair.input;
 
 /**
  * Created by beng on 13/01/2016.

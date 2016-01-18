@@ -1,4 +1,4 @@
-package com.grayben.testOracle.generator;
+package com.grayben.testOracle.generator.function.parameter;
 
 import java.util.function.Function;
 

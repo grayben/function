@@ -2,7 +2,7 @@
   <artifact type="jar" name="TestOracle:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/TestOracle_jar</output-path>
     <root id="archive" name="TestOracle.jar">
-      <element id="module-output" name="TestOracle" />
+      <element id="module-output" name="function" />
     </root>
   </artifact>
 </component>

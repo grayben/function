@@ -1,4 +1,4 @@
-package com.grayben.testOracle.oracle;
+package com.grayben.testOracle.generator.function;
 
 import com.grayben.testOracle.generator.InputAndExpectedOutputRetrievable;
 import com.grayben.testOracle.generator.sut.configuration.SUTConfigurationRetrievable;

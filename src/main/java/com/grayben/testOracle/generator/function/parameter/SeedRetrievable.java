@@ -1,4 +1,4 @@
-package com.grayben.testOracle.generator.seed;
+package com.grayben.testOracle.generator.function.parameter;
 
 /**
  * Created by beng on 17/01/2016.

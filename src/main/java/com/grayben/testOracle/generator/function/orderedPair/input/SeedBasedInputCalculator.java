@@ -1,6 +1,6 @@
-package com.grayben.testOracle.generator.input;
+package com.grayben.testOracle.generator.function.orderedPair.input;
 
-import com.grayben.testOracle.generator.SeedBasedCalculator;
+import com.grayben.testOracle.generator.function.parameter.SeedBasedCalculator;
 
 import java.util.function.Function;
 
