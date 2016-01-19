@@ -1,4 +1,4 @@
-package com.grayben.tools.math.tuple.orderedPair;
+package com.grayben.tools.math.tuple.pair;
 
 import java.util.AbstractMap;
 import java.util.Map;
