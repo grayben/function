@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.grayben.tools</groupId>
-    <artifactId>function</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>math</artifactId>
+    <packaging>jar</packaging>
     <version>0.3.2-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

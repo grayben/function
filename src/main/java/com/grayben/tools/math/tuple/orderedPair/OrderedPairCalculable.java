@@ -1,4 +1,4 @@
-package com.grayben.tools.function.orderedPair;
+package com.grayben.tools.math.tuple.orderedPair;
 
 import java.util.function.Function;
 

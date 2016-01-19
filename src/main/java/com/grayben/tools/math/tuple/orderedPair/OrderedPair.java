@@ -1,7 +1,4 @@
-package com.grayben.tools.function.orderedPair;
-
-import com.grayben.tools.function.orderedPair.input.InputRetrievable;
-import com.grayben.tools.function.orderedPair.output.OutputRetrievable;
+package com.grayben.tools.math.tuple.orderedPair;
 
 import java.util.AbstractMap;
 import java.util.Map;
@@ -11,8 +8,7 @@ import java.util.Map;
  */
 public class OrderedPair<I, O> extends AbstractMap.SimpleImmutableEntry<I, O>
         implements
-        InputRetrievable<I>,
-        OutputRetrievable<O> {
+        OrderedPairRetrievable<I, O> {
 
     public OrderedPair(I input, O output) {
         super(input, output);

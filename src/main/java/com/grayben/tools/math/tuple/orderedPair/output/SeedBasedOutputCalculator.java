@@ -1,4 +1,4 @@
-package com.grayben.tools.function.orderedPair.output;
+package com.grayben.tools.math.tuple.orderedPair.output;
 
 import java.util.function.Function;
 
@@ -9,10 +9,11 @@ public abstract class SeedBasedOutputCalculator<S, O>
         implements OutputCalculable<S, O> {
 
     public final O calculateOutput(S seed) {
-        return this.generateResult(seed);
+        //return this.generateResult(seed);
+        return null;
     }
 
-    @Override
+    //@Override
     protected final Function<S, O> generateSeedToResultFunction() {
         return this.generateSeedToExpectedOutputFunction();
     }

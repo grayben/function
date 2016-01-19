@@ -1,4 +1,4 @@
-package com.grayben.tools.function.orderedPair.input;
+package com.grayben.tools.math.tuple.orderedPair.input;
 
 import java.util.function.Function;
 
@@ -13,7 +13,11 @@ public abstract class ParametisedInputCalculator<S, O>
         return this.generateResult(seed);
     }
 
-    @Override
+    protected O generateResult(S seed){
+        return null;
+    }
+
+    //@Override
     protected final Function<S, O> generateSeedToResultFunction() {
         return this.generateSeedToInputFunction();
     }

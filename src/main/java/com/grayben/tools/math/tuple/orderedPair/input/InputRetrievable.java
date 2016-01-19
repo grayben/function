@@ -1,4 +1,4 @@
-package com.grayben.tools.function.orderedPair.input;
+package com.grayben.tools.math.tuple.orderedPair.input;
 
 /**
  * Created by beng on 17/01/2016.
