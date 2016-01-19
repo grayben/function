@@ -1,4 +1,4 @@
-package com.grayben.tools.math.tuple.pair.output;
+package com.grayben.tools.math.function.output;
 
 /**
  * Created by beng on 17/01/2016.

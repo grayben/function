@@ -1,4 +1,4 @@
-package com.grayben.tools.math.tuple.pair.output;
+package com.grayben.tools.math.function.output;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

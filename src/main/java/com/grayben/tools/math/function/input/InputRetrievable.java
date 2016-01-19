@@ -1,4 +1,4 @@
-package com.grayben.tools.math.tuple.pair.input;
+package com.grayben.tools.math.function.input;
 
 /**
  * Created by beng on 17/01/2016.

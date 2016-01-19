@@ -1,7 +1,7 @@
 package com.grayben.tools.math.tuple.pair;
 
-import com.grayben.tools.math.tuple.pair.input.InputRetrievable;
-import com.grayben.tools.math.tuple.pair.output.OutputRetrievable;
+import com.grayben.tools.math.function.input.InputRetrievable;
+import com.grayben.tools.math.function.output.OutputRetrievable;
 
 /**
  * Created by beng on 19/01/2016.
