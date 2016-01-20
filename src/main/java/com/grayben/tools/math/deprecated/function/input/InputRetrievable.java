@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function.input;
+package com.grayben.tools.math.deprecated.function.input;
 
 /**
  * Created by beng on 17/01/2016.

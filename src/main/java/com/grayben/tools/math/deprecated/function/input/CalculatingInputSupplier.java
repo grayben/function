@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function.input;
+package com.grayben.tools.math.deprecated.function.input;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

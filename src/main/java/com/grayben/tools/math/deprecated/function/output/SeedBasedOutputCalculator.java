@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function.output;
+package com.grayben.tools.math.deprecated.function.output;
 
 import java.util.function.Function;
 
