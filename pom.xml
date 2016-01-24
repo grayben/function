@@ -5,7 +5,7 @@
     <groupId>com.grayben.tools</groupId>
     <artifactId>math</artifactId>
     <packaging>jar</packaging>
-    <version>0.4.1-SNAPSHOT</version>
+    <version>0.4.2</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
