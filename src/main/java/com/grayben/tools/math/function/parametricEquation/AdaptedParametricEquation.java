@@ -4,12 +4,12 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.function.Function;
 
-public class AdaptedParametricEquation<T, A, X, Y> implements ParametricEquation<T, X, Y> {
+public class AdaptedParametricEquation<T, U, X, Y> implements ParametricEquation<T, X, Y> {
 
-    private final Function<T, A> inputAdapter;
-    private final ParametricEquation<A, X, Y> parametricEquation;
+    private final Function<T, U> inputAdapter;
+    private final ParametricEquation<U, X, Y> parametricEquation;
 
-    public AdaptedParametricEquation(Function<T, A> inputAdapter, ParametricEquation<A, X, Y> parametricEquation) {
+    public AdaptedParametricEquation(Function<T, U> inputAdapter, ParametricEquation<U, X, Y> parametricEquation) {
         this.inputAdapter = inputAdapter;
         this.parametricEquation = parametricEquation;
     }
