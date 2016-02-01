@@ -1,6 +1,6 @@
-package com.grayben.tools.math.function.parametricEquation;
+package com.grayben.tools.math.function.parametric;
 
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.util.function.Function;
 
@@ -15,7 +15,7 @@ public class AdaptedParametricEquation<T, U, X, Y> implements ParametricEquation
     }
 
     @Override
-    public Pair<X, Y> apply(T option) {
+    public ImmutablePair<X, Y> apply(T option) {
         return parametricEquation.compose(inputAdapter).apply(option);
     }
 }
