@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function.parametricEquation;
+package com.grayben.tools.math.function;
 
 import java.util.function.Function;
 
