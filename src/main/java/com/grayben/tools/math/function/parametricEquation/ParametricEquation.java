@@ -1,4 +1,4 @@
-package com.grayben.tools.math.parametricEquation;
+package com.grayben.tools.math.function.parametricEquation;
 
 import org.apache.commons.lang3.tuple.Pair;
 
