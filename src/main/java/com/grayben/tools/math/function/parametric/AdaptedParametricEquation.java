@@ -41,7 +41,7 @@ public class AdaptedParametricEquation<T, U, X, Y> implements ParametricEquation
     }
 
     @Override
-    public ImmutablePair<X, Y> apply(T option) {
-        return parametricEquation.compose(inputAdapter).apply(option);
+    public ImmutablePair<X, Y> apply(T input) {
+        return parametricEquation.compose(inputAdapter).apply(input);
     }
 }
