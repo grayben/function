@@ -24,7 +24,7 @@ public class ConstantFunctionTest {
         final Double piConstant = Math.PI;
         final ConstantFunction<Object, Double> piConstantFunction = new ConstantFunction<>(piConstant);
         final List<Object> inputList = new ArrayList<>();
-        for(int i = 0; i < 10000000; i++){
+        for(int i = 0; i < (100 * 1000); i++){
             inputList.add(RandomUtils.nextInt(0, Integer.MAX_VALUE) - RandomUtils.nextInt(0, Integer.MAX_VALUE));
             inputList.add(RandomUtils.nextDouble(Double.MIN_VALUE, Double.MAX_VALUE));
             inputList.add(RandomUtils.nextFloat(Float.MIN_VALUE, Float.MAX_VALUE));
