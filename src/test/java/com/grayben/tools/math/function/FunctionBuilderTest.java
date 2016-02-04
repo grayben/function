@@ -15,7 +15,7 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class FunctionBuilderTest {
 
-    public static final int NUM_RANDOM_INPUTS = 100 * 1000;
+    public static final int NUM_RANDOM_INPUTS = 1000 * 1000;
 
     public static final Function<Integer, String> START = Integer::toHexString;
     public static final Function<Double, Integer> PREPEND = Double::intValue;
