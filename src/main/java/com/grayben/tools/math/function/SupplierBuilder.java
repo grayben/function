@@ -26,6 +26,11 @@ public class SupplierBuilder<X> implements Supplier<Supplier<X>> {
      * @param supplier the supplier upon which to form the composite supplier
      */
     public SupplierBuilder(Supplier<X> supplier) {
+
+        if (supplier == null) {
+            throw new NullPointerException("Argument cannot be null; parameter name: 'supplier'");
+        }
+
         this.supplierSoFar = supplier;
     }
 
@@ -38,6 +43,11 @@ public class SupplierBuilder<X> implements Supplier<Supplier<X>> {
      * @return a new builder holding the new composed bi-predicate
      */
     final public <Y> SupplierBuilder<Y> append(Function<? super X, ? extends Y> outputAdapter){
+
+        if (outputAdapter == null) {
+            throw new NullPointerException("Argument cannot be null; parameter name: 'outputAdapter'");
+        }
+
         return new SupplierBuilder<>( () -> outputAdapter.apply(supplierSoFar.get()) );
     }
 
