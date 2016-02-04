@@ -1,5 +1,6 @@
-package com.grayben.tools.math.function;
+package com.grayben.tools.math.function.builder;
 
+import com.grayben.tools.math.function.builder.BiPredicateBuilder;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Rule;

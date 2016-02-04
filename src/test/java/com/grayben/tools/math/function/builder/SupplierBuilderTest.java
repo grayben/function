@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function;
+package com.grayben.tools.math.function.builder;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Rule;
