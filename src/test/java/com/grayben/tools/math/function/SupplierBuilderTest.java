@@ -42,7 +42,7 @@ public class SupplierBuilderTest {
 
         for (int i = 0; i < NUM_RANDOM_INPUTS; i++){
             Supplier<Integer> start
-                    = () -> (RandomUtils.nextInt(0, Integer.MAX_VALUE) - RandomUtils.nextInt(0, Integer.MIN_VALUE));
+                    = () -> (RandomUtils.nextInt(0, Integer.MAX_VALUE) - RandomUtils.nextInt(0, Integer.MAX_VALUE));
             Supplier<String> expected = () -> ADAPTER.apply(start.get());
             Supplier<String> actual = new SupplierBuilder<>(start).append(ADAPTER).build();
 
