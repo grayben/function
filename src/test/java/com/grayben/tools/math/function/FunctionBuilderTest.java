@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function.parametric;
+package com.grayben.tools.math.function;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Rule;
@@ -8,7 +8,7 @@ import org.junit.rules.ExpectedException;
 import java.util.function.Function;
 
 import static junit.framework.Assert.assertSame;
-import static junit.framework.TestCase.*;
+import static junit.framework.TestCase.assertEquals;
 
 /**
  * Created by Ben Gray on 4/02/2016.
