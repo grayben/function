@@ -5,12 +5,27 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
+ * Incrementally builds a composed bi-predicate.
+ * <p>
+ * Builds a composed bi-predicate by chaining any number of input adapters
+ * into the predicate specified during the construction of an object of this class.
+ * <p>
  * Created by Ben Gray on 4/02/2016.
+ *
+ * @param <X> the type of the first input to the current effective {@link BiPredicate}
+ * @param <Y> the type of the second input to the current effective {@link BiPredicate}
  */
 public class BiPredicateBuilder<X, Y> implements Supplier<BiPredicate<X, Y>> {
 
+    /**
+     * The current effective BiPredicate
+     */
     final private BiPredicate<X, Y> biPredicateSoFar;
 
+    /**
+     * Constructs a builder based upon the specified bi-predicate.
+     * @param biPredicate the bi=predicate upon which to form a composite bi-predicate
+     */
     public BiPredicateBuilder(final BiPredicate<X, Y> biPredicate) {
 
         if (biPredicate == null) {
@@ -21,9 +36,9 @@ public class BiPredicateBuilder<X, Y> implements Supplier<BiPredicate<X, Y>> {
     }
 
     /**
-     * Compose the first input of the bi-predicate so far with the specified input adapter.
+     * Compose the first input of the current effective bi-predicate with the specified input adapter.
      *
-     * @param inputAdapter the input adapter with which to compose the first input to the bi-predicate so far
+     * @param inputAdapter the input adapter with which to compose the first input to the current effective bi-predicate
      * @param <A> the type of input accepted by the specified input adapter, and hence, the first input
      *           to the new composed bi-predicate
      * @return a new builder holding the new composed bi-predicate
@@ -38,9 +53,9 @@ public class BiPredicateBuilder<X, Y> implements Supplier<BiPredicate<X, Y>> {
     }
 
     /**
-     * Compose the first input of the bi-predicate so far with the specified input adapter.
+     * Compose the first input of the current effective bi-predicate with the specified input adapter.
      *
-     * @param inputAdapter the input adapter with which to compose the second input to the bi-predicate so far
+     * @param inputAdapter the input adapter with which to compose the second input to the current effective bi-predicate
      * @param <A> the type of input accepted by the specified input adapter, and hence, the second input
      *           to the new composed bi-predicate
      * @return a new builder holding the new composed bi-predicate
