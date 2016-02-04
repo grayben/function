@@ -15,18 +15,18 @@ import java.util.function.Supplier;
  * @param <U> the input type of the current effective function
  * @param <V> the output type of the current effective function
  */
-public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
+public class FunctionBuilder<U, V> implements Supplier<Function<? super U, ? extends V>> {
 
     /**
      * The composed function so far
      */
-    final private Function<U, V> functionSoFar;
+    final private Function<? super U, ? extends V> functionSoFar;
 
     /**
      * Constructs a function builder starting with the specified function.
      * @param function the function upon which to build
      */
-    public FunctionBuilder(final Function<U, V> function) {
+    public FunctionBuilder(final Function<? super U, ? extends V> function) {
         this.functionSoFar = function;
     }
 
@@ -37,7 +37,7 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @param <A> the type of input accepted by the specified input adapter, and hence, the new composed function
      * @return a new function builder holding the new composed function
      */
-    final public <A> FunctionBuilder<A, V> prepend(final Function<A, U> inputAdapter){
+    final public <A> FunctionBuilder<? super A, ? extends V> prepend(final Function<? super A, ? extends U> inputAdapter){
         return new FunctionBuilder<>(functionSoFar.compose(inputAdapter));
     }
 
@@ -48,14 +48,14 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @param <Z> the type of output produced by the specified output adapter, and hence, the new composed function
      * @return a new function builder holding the new composed function
      */
-    final public <Z> FunctionBuilder<U, Z> append(final Function<V, Z> outputAdapter){
+    final public <Z> FunctionBuilder<? super U, ? extends Z> append(final Function<? super V, ? extends Z> outputAdapter){
         return new FunctionBuilder<>(outputAdapter.compose(functionSoFar));
     }
 
     /**
      * @return the input function composed with all adapters passed into this builder
      */
-    final public Function<U, V> build(){
+    final public Function<? super U, ? extends V> build(){
         return this.functionSoFar;
     }
 
@@ -63,7 +63,7 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @return the same output as {@link #build()}
      */
     @Override
-    final public Function<U, V> get() {
+    final public Function<? super U, ? extends V> get() {
         return this.build();
     }
 }
