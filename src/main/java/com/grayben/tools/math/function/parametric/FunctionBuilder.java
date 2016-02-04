@@ -27,6 +27,11 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @param function the function upon which to build
      */
     public FunctionBuilder(final Function<U, V> function) {
+
+        if (function == null) {
+            throw new NullPointerException("The parameter 'function' cannot be null");
+        }
+
         this.functionSoFar = function;
     }
 
@@ -38,6 +43,11 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @return a new function builder holding the new composed function
      */
     final public <A> FunctionBuilder<A, V> prepend(final Function<? super A, ? extends U> inputAdapter){
+
+        if (inputAdapter == null) {
+            throw new NullPointerException("The parameter 'inputAdapter' cannot be null");
+        }
+
         return new FunctionBuilder<>(functionSoFar.compose(inputAdapter));
     }
 
@@ -49,6 +59,11 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @return a new function builder holding the new composed function
      */
     final public <Z> FunctionBuilder<U, Z> append(final Function<? super V, ? extends Z> outputAdapter){
+
+        if (outputAdapter == null) {
+            throw new NullPointerException("The parameter 'outputAdapter' cannot be null");
+        }
+        
         return new FunctionBuilder<>(functionSoFar.andThen(outputAdapter));
     }
 
