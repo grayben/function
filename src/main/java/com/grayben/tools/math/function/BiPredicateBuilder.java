@@ -24,7 +24,7 @@ public class BiPredicateBuilder<X, Y> implements Supplier<BiPredicate<X, Y>> {
 
     /**
      * Constructs a builder based upon the specified bi-predicate.
-     * @param biPredicate the bi=predicate upon which to form a composite bi-predicate
+     * @param biPredicate the bi-predicate upon which to form a composite bi-predicate
      */
     public BiPredicateBuilder(final BiPredicate<X, Y> biPredicate) {
 
