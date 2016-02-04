@@ -41,8 +41,9 @@ public class SupplierBuilderTest {
     test_composedSupplierOutputEqualsExpectedSupplierOutput_onRandomisedInitialSupplierSuite() throws Exception {
 
         for (int i = 0; i < NUM_RANDOM_INPUTS; i++){
+            Integer integer = RandomUtils.nextInt(0, Integer.MAX_VALUE) - RandomUtils.nextInt(0, Integer.MAX_VALUE);
             Supplier<Integer> start
-                    = () -> (RandomUtils.nextInt(0, Integer.MAX_VALUE) - RandomUtils.nextInt(0, Integer.MAX_VALUE));
+                    = () -> (integer);
             Supplier<String> expected = () -> ADAPTER.apply(start.get());
             Supplier<String> actual = new SupplierBuilder<>(start).append(ADAPTER).build();
 
