@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function.parametric;
+package com.grayben.tools.math.function;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
