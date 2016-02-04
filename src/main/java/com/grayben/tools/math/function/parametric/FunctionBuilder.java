@@ -4,28 +4,64 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
+ * Incrementally builds a composed function.
+ * <p>
+ * Builds a composed function by chaining any number of input adapters,
+ * and/or any number of output adapters,
+ * to the function specified during construction.
+ * <p>
  * Created by Ben Gray on 3/02/2016.
+ *
+ * @param <U> the input type of the current effective function
+ * @param <V> the output type of the current effective function
  */
 public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
 
-    final private Function<U, V> function;
+    /**
+     * The composed function so far
+     */
+    final private Function<U, V> functionSoFar;
 
-    private FunctionBuilder(Function<U, V> underlyingFunction) {
-        this.function = underlyingFunction;
+    /**
+     * Constructs a function builder starting with the specified function.
+     * @param function the function upon which to build
+     */
+    public FunctionBuilder(Function<U, V> function) {
+        this.functionSoFar = function;
     }
 
-    public Function<U, V> build() {
-        return function;
+    /**
+     * Compose the function so far with the specified input adapter.
+     *
+     * @param inputAdapter the input adapter with which to compose the function so far
+     * @param <A> the type of input accepted by the specified input adapter, and hence, the new composed function
+     * @return a new function builder holding the new composed function
+     */
+    public <A> FunctionBuilder<A, V> prepend(Function<A, U> inputAdapter){
+        return new FunctionBuilder<>(functionSoFar.compose(inputAdapter));
     }
 
-    public <A> FunctionBuilder<A, V> prependInputAdapter(Function<A, U> inputAdapter){
-        return new FunctionBuilder<>(inputAdapter.andThen(function));
+    /**
+     * Compose the specified input adapter with the function so far.
+     *
+     * @param outputAdapter the output adapter with which to compose the function so far
+     * @param <Z> the type of output produced by the specified output adapter, and hence, the new composed function
+     * @return a new function builder holding the new composed function
+     */
+    public <Z> FunctionBuilder<U, Z> append(Function<V, Z> outputAdapter){
+        return new FunctionBuilder<>(outputAdapter.compose(functionSoFar));
     }
 
-    public <Z> FunctionBuilder<U, Z> appendOutputAdapter(Function<V, Z> outputAdapter){
-        return new FunctionBuilder<>(function.andThen(outputAdapter));
+    /**
+     * @return the input function composed with all adapters passed into this builder
+     */
+    public Function<U, V> build(){
+        return this.functionSoFar;
     }
 
+    /**
+     * @return the same output as {@link #build()}
+     */
     @Override
     public Function<U, V> get() {
         return this.build();
