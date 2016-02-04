@@ -12,21 +12,21 @@ import java.util.function.Supplier;
  * <p>
  * Created by Ben Gray on 3/02/2016.
  *
- * @param <U> the input type of the current effective function
- * @param <V> the output type of the current effective function
+ * @param <X> the input type of the current effective function
+ * @param <Y> the output type of the current effective function
  */
-public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
+public class FunctionBuilder<X, Y> implements Supplier<Function<X, Y>> {
 
     /**
      * The composed function so far
      */
-    final private Function<U, V> functionSoFar;
+    final private Function<X, Y> functionSoFar;
 
     /**
      * Constructs a function builder starting with the specified function.
      * @param function the function upon which to build
      */
-    public FunctionBuilder(final Function<U, V> function) {
+    public FunctionBuilder(final Function<X, Y> function) {
 
         if (function == null) {
             throw new NullPointerException("Argument cannot be null; parameter name: 'function'");
@@ -42,7 +42,7 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @param <A> the type of input accepted by the specified input adapter, and hence, the new composed function
      * @return a new function builder holding the new composed function
      */
-    final public <A> FunctionBuilder<A, V> prepend(final Function<? super A, ? extends U> inputAdapter){
+    final public <A> FunctionBuilder<A, Y> prepend(final Function<? super A, ? extends X> inputAdapter){
 
         if (inputAdapter == null) {
             throw new NullPointerException("Argument cannot be null; parameter name: 'inputAdapter'");
@@ -58,7 +58,7 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @param <Z> the type of output produced by the specified output adapter, and hence, the new composed function
      * @return a new function builder holding the new composed function
      */
-    final public <Z> FunctionBuilder<U, Z> append(final Function<? super V, ? extends Z> outputAdapter){
+    final public <Z> FunctionBuilder<X, Z> append(final Function<? super Y, ? extends Z> outputAdapter){
 
         if (outputAdapter == null) {
             throw new NullPointerException("Argument cannot be null; parameter name: 'outputAdapter'");
@@ -70,7 +70,7 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
     /**
      * @return the input function composed with all adapters passed into this builder
      */
-    final public Function<U, V> build(){
+    final public Function<X, Y> build(){
         return this.functionSoFar;
     }
 
@@ -78,7 +78,7 @@ public class FunctionBuilder<U, V> implements Supplier<Function<U, V>> {
      * @return the same output as {@link #build()}
      */
     @Override
-    final public Function<U, V> get() {
+    final public Function<X, Y> get() {
         return this.build();
     }
 }
