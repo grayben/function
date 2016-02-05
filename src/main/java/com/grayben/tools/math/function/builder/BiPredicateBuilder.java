@@ -43,7 +43,7 @@ public class BiPredicateBuilder<X, Y> implements Supplier<BiPredicate<X, Y>> {
      *           to the new composed bi-predicate
      * @return a new builder holding the new composed bi-predicate
      */
-    final public <A> BiPredicateBuilder<A, Y> prependToFirstInput(final Function<? super A, ? extends X> inputAdapter){
+    public <A> BiPredicateBuilder<A, Y> prependToFirstInput(final Function<? super A, ? extends X> inputAdapter){
 
         if (inputAdapter == null) {
             throw new NullPointerException("Argument cannot be null; parameter name: 'inputAdapter'");
@@ -60,7 +60,7 @@ public class BiPredicateBuilder<X, Y> implements Supplier<BiPredicate<X, Y>> {
      *           to the new composed bi-predicate
      * @return a new builder holding the new composed bi-predicate
      */
-    final public <A> BiPredicateBuilder<X, A> prependToSecondInput(final Function<? super A, ? extends Y> inputAdapter){
+    public <A> BiPredicateBuilder<X, A> prependToSecondInput(final Function<? super A, ? extends Y> inputAdapter){
 
         if (inputAdapter == null) {
             throw new NullPointerException("Argument cannot be null; parameter name: 'inputAdapter'");
@@ -72,7 +72,7 @@ public class BiPredicateBuilder<X, Y> implements Supplier<BiPredicate<X, Y>> {
     /**
      * @return the composed bi-predicate
      */
-    final public BiPredicate<X, Y> build(){
+    public BiPredicate<X, Y> build(){
         return this.biPredicateSoFar;
     }
 

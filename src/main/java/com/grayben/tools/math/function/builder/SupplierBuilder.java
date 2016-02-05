@@ -42,7 +42,7 @@ public class SupplierBuilder<X> implements Supplier<Supplier<X>> {
      *           and hence, the type of the output of the new composed supplier
      * @return a new builder holding the new composed bi-predicate
      */
-    final public <Y> SupplierBuilder<Y> append(Function<? super X, ? extends Y> outputAdapter){
+    public <Y> SupplierBuilder<Y> append(Function<? super X, ? extends Y> outputAdapter){
 
         if (outputAdapter == null) {
             throw new NullPointerException("Argument cannot be null; parameter name: 'outputAdapter'");
@@ -54,7 +54,7 @@ public class SupplierBuilder<X> implements Supplier<Supplier<X>> {
     /**
      * @return the composed supplier
      */
-    final public Supplier<X> build() {
+    public Supplier<X> build() {
         return this.supplierSoFar;
     }
 
