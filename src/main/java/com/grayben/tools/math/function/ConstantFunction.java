@@ -1,6 +1,7 @@
 package com.grayben.tools.math.function;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * A simple function which ignores input and always returns a specified output when {@link #apply(Object)} is invoked.
@@ -9,7 +10,7 @@ import java.util.function.Function;
  * @param <X> the input type
  * @param <Y> the output type
  */
-public class ConstantFunction<X, Y> implements Function<X, Y> {
+public class ConstantFunction<X, Y> implements Function<X, Y>, Supplier<Y> {
 
     /**
      * The constant to return when {@link #apply(Object)} is invoked.
@@ -29,10 +30,15 @@ public class ConstantFunction<X, Y> implements Function<X, Y> {
      * @return {@link #constant}
      */
     @Override
-    public Y apply(X x) {
-        // "ignore input";
+    final public Y apply(X x) {
+        return this.get();
+    }
 
-        //return specified constant
+    /**
+     * @return the constant provided at construction
+     */
+    @Override
+    public Y get() {
         return this.constant;
     }
 }
