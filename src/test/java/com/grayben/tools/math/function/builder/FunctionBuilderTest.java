@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function;
+package com.grayben.tools.math.function.builder;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Rule;
@@ -15,11 +15,11 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class FunctionBuilderTest {
 
-    public static final int NUM_RANDOM_INPUTS = 100 * 1000;
+    public static final int NUM_RANDOM_INPUTS = 1000 * 1000;
 
-    private Function<Integer, String> start = Integer::toHexString;
-    private Function<Double, Integer> prepend = Double::intValue;
-    private Function<String, Integer> append = String::length;
+    public static final Function<Integer, String> START = Integer::toHexString;
+    public static final Function<Double, Integer> PREPEND = Double::intValue;
+    public static final Function<String, Integer> APPEND = String::length;
 
     @Rule public ExpectedException thrown = ExpectedException.none();
 
@@ -51,9 +51,9 @@ public class FunctionBuilderTest {
     test_composedFunctionOutputEqualsExpectedFunctionOutput_onRandomisedInputSuite() throws Exception {
 
         Function<Double, Integer> expected
-                = start.compose(prepend).andThen(append);
+                = START.compose(PREPEND).andThen(APPEND);
         Function<Double, Integer> actual
-                = new FunctionBuilder<>(start).prepend(prepend).append(append).build();
+                = new FunctionBuilder<>(START).prepend(PREPEND).append(APPEND).build();
 
         for(int i = 0; i < NUM_RANDOM_INPUTS; i++){
             Double input = RandomUtils.nextDouble(Double.MIN_VALUE, Double.MAX_VALUE);
@@ -66,7 +66,7 @@ public class FunctionBuilderTest {
     test_getReturnsSameAsBuild() throws Exception {
 
         FunctionBuilder<Double, Integer> functionBuilder
-                = new FunctionBuilder<>(start).append(append).prepend(prepend);
+                = new FunctionBuilder<>(START).append(APPEND).prepend(PREPEND);
 
         assertSame(functionBuilder.build(), functionBuilder.get());
     }

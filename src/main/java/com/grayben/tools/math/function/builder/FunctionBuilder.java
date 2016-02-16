@@ -1,4 +1,4 @@
-package com.grayben.tools.math.function;
+package com.grayben.tools.math.function.builder;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -42,7 +42,7 @@ public class FunctionBuilder<X, Y> implements Supplier<Function<X, Y>> {
      * @param <A> the type of input accepted by the specified input adapter, and hence, the new composed function
      * @return a new function builder holding the new composed function
      */
-    final public <A> FunctionBuilder<A, Y> prepend(final Function<? super A, ? extends X> inputAdapter){
+    public <A> FunctionBuilder<A, Y> prepend(final Function<? super A, ? extends X> inputAdapter){
 
         if (inputAdapter == null) {
             throw new NullPointerException("Argument cannot be null; parameter name: 'inputAdapter'");
@@ -58,7 +58,7 @@ public class FunctionBuilder<X, Y> implements Supplier<Function<X, Y>> {
      * @param <Z> the type of output produced by the specified output adapter, and hence, the new composed function
      * @return a new function builder holding the new composed function
      */
-    final public <Z> FunctionBuilder<X, Z> append(final Function<? super Y, ? extends Z> outputAdapter){
+    public <Z> FunctionBuilder<X, Z> append(final Function<? super Y, ? extends Z> outputAdapter){
 
         if (outputAdapter == null) {
             throw new NullPointerException("Argument cannot be null; parameter name: 'outputAdapter'");
@@ -70,7 +70,7 @@ public class FunctionBuilder<X, Y> implements Supplier<Function<X, Y>> {
     /**
      * @return the input function composed with all adapters passed into this builder
      */
-    final public Function<X, Y> build(){
+    public Function<X, Y> build(){
         return this.functionSoFar;
     }
 
